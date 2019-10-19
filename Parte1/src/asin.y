@@ -90,8 +90,7 @@ expresionAditiva
    	| expresionAditiva operadorAditivo expresionMultiplicativa
    	;
 expresionMultiplicativa : expresionUnaria
-   	| expresionMult
-iplicativa operadorMultiplicatico expresionUnaria
+   	| expresionMultiplicativa operadorMultiplicativo expresionUnaria
    	;
 expresionUnaria 
 	: expresionSufija

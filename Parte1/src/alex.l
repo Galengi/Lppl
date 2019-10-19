@@ -27,6 +27,7 @@ identificador  {letra}({letra}|{digito}|_)*
 %%
 {delimitador}  { if (verbosidad) ECHO; }
 
+"struct"    { retornar(STRUCT_);       }
 "read"          { retornar(READ_);         }
 "print"         { retornar(PRINT_);        }
 "if"            { retornar(IF_);           }
@@ -67,7 +68,6 @@ identificador  {letra}({letra}|{digito}|_)*
 
 {constante}     { retornar(CTE_);          }
 {identificador} { retornar(ID_);           }
-{estructura}    { retornar(STRUCT_);       }
 
 .	       { yyerror("Caracter desconocido"); }
 
