@@ -21,7 +21,7 @@ delimitador    [ \t\n]+
 comentario     \/\/.*
 letra          [a-zA-Z]
 digito         [0-9]
-constante      {digito}+(\.{digito}+)?
+constante      {digito}*(\.{digito}+)?
 identificador  {letra}({letra}|{digito}|_)*
 
 %%
@@ -42,32 +42,32 @@ identificador  {letra}({letra}|{digito}|_)*
 "-="            { retornar(MENOSIGUAL_);   }
 "*="            { retornar(PORIGUAL_);     }
 "/="            { retornar(DIVIGUAL_);     }
-"++"            { retornar(INCRE_); }
-"--"            { retornar(DECRE_); }
-"&&"            { retornar(AND_);        }
-"||"            { retornar(OR_);         }
-"<"             { retornar(MENOR_);    }
-">"             { retornar(MAYOR_);    }
-"<="            { retornar(MENIGU_);  }
-">="            { retornar(MAYIGU_);  }
-"="             { retornar(ASIG_);        }
-"+"             { retornar(MAS_);       }
-"-"             { retornar(MENOS_);      }
-"*"             { retornar(POR_);       }
-"/"             { retornar(DIV_);        }
-"%"             { retornar(PORCENT_);        }
+"++"            { retornar(INCRE_);        }
+"--"            { retornar(DECRE_);        }
+"&&"            { retornar(AND_);          }
+"||"            { retornar(OR_);           }
+"<"             { retornar(MENOR_);        }
+">"             { retornar(MAYOR_);        }
+"<="            { retornar(MENIGU_);       }
+">="            { retornar(MAYIGU_);       }
+"="             { retornar(ASIG_);         }
+"+"             { retornar(MAS_);          }
+"-"             { retornar(MENOS_);        }
+"*"             { retornar(POR_);          }
+"/"             { retornar(DIV_);          }
+"%"             { retornar(PORCENT_);      }
 "!"             { retornar(NEGACIO_);      }
-"("             { retornar(PARENABI_);  }
-")"             { retornar(PARENCER_);  }
-"{"             { retornar(LLAVABI_);       }
-"}"             { retornar(LLAVCER_);       }
-"["             { retornar(CORCHABI_);    }
-"]"             { retornar(CORCHCER_);    }
+"("             { retornar(PARENABI_);     }
+")"             { retornar(PARENCER_);     }
+"{"             { retornar(LLAVABI_);      }
+"}"             { retornar(LLAVCER_);      }
+"["             { retornar(CORCHABI_);     }
+"]"             { retornar(CORCHCER_);     }
 ";"             { retornar(PUNTDECIM_);    }
 
 {constante}     { retornar(CTE_);          }
 {identificador} { retornar(ID_);           }
-{estructura} { retornar(STRUCT_);           }
+{estructura}    { retornar(STRUCT_);       }
 
 .	       { yyerror("Caracter desconocido"); }
 

@@ -103,7 +103,7 @@ expresionSufija
    	| ID_ operadorIncremento
    	| ID_ CORCHABI_ expresion CORCHCER_
    	| ID_
-   	| ID_ . ID_
+   	| ID_ PUNTDECIM_ ID_
    	| constante
    	;
 constante
