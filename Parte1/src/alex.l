@@ -7,7 +7,7 @@
 #include "header.h"
 #include "asin.h"
 
-#define  retornar(x) {if (verbosidad) ECHO; return(x); }
+#define  retornar(x) {if (verbosidad) ECHO; }
 %}
 /*-----------------------------------------------------------------------------
   Estas opciones evitan "warnings" innecesarios y permiten obtener el
