@@ -12,7 +12,7 @@
 %token PARA_ PARC_ ASIG_ MAS_ MENOS_ POR_ DIV_ PORCENT_ NEGACIO_  AND_ OR_
 %token INCRE_ DECRE_ MASIGUAL_ MENOSIGUAL_ PORIGUAL_ DIVIGUAL_
 %token IGUAL_ DISTINTO_ MAYOR_ MENOR_ MAYIGU_ MENIGU_ 
-%token LLAVABI_ LLAVCER_ CORCHABI_ CORCHCER_ PARENABI_ PARENCER_ PUNTDECIM_
+%token LLAVABI_ LLAVCER_ CORCHABI_ CORCHCER_ PARENABI_ PARENCER_ PUNTDECIM_ PUNTO_
 
 %%
 
@@ -31,10 +31,10 @@ sentencia
    	;
 	
 declaracion 
-	: tipoSimple ID_
-   	| tipoSimple ID_ ASIG_ constante	 
-   	| tipoSimple ID_ CORCHABI_ CTE_ CORCHCER_
-   	| STRUCT_ LLAVABI_  listaCampos LLAVCER_ ID_  	 
+	: tipoSimple ID_ PUNTDECIM_
+   	| tipoSimple ID_ ASIG_ CTE_ PUNTDECIM_ 
+   	| tipoSimple ID_ CORCHABI_ constante CORCHCER_ PUNTDECIM_
+   	| STRUCT_ LLAVABI_  listaCampos LLAVCER_ ID_ PUNTDECIM_	 
    	;
 	
 tipoSimple 
@@ -43,8 +43,8 @@ tipoSimple
    	;
 	
 listaCampos 
-	: tipoSimple ID_
-   	| listaCampos tipoSimple ID_
+	: tipoSimple ID_ PUNTDECIM_
+   	| listaCampos tipoSimple ID_ PUNTDECIM_
    	;
 	
 instruccion 
@@ -62,8 +62,8 @@ listaInstrucciones
    	;
 	
 instruccionEntradaSalida 
-	: READ_ PARENABI_ ID_ PARENCER_
-   	| PRINT_ PARENABI_ expresion PARENCER_
+	: READ_ PARENABI_ ID_ PARENCER_ PUNTDECIM_
+   	| PRINT_ PARENABI_ expresion PARENCER_ PUNTDECIM_
    	;
 	
 instruccionSeleccion
@@ -75,15 +75,15 @@ instruccionIteracion
    	;
 	
 instruccionExpresion 
-	: expresion
-   	| 
+	: expresion PUNTDECIM_
+   	| PUNTDECIM_
    	;
 	
 expresion
 	: expresionLogica
    	| ID_ operadorAsignacion expresion
    	| ID_  CORCHABI_ expresion CORCHCER_ operadorAsignacion expresion
-   	| ID_ PUNTDECIM_ ID_ operadorAsignacion expresion
+   	| ID_ PUNTO_ ID_ operadorAsignacion expresion
    	;
 	
 expresionLogica 
@@ -106,7 +106,8 @@ expresionAditiva
    	| expresionAditiva operadorAditivo expresionMultiplicativa
    	;
 	
-expresionMultiplicativa : expresionUnaria
+expresionMultiplicativa
+    : expresionUnaria
    	| expresionMultiplicativa operadorMultiplicativo expresionUnaria
    	;
 	
@@ -121,7 +122,7 @@ expresionSufija
    	| ID_ operadorIncremento
    	| ID_ CORCHABI_ expresion CORCHCER_
    	| ID_
-   	| ID_ PUNTDECIM_ ID_
+   	| ID_ PUNTO_ ID_
    	| constante
    	;
 	
