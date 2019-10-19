@@ -7,7 +7,7 @@
 #include "header.h"
 #include "asin.h"
 
-#define  retornar(x) {if (verbosidad) ECHO;}
+#define  retornar(x) {if (verbosidad) ECHO; return(x); }
 %}
 /*-----------------------------------------------------------------------------
   Estas opciones evitan "warnings" innecesarios y permiten obtener el
@@ -25,9 +25,11 @@ constante      {digito}*(\.{digito}+)?
 identificador  {letra}({letra}|{digito}|_)*
 
 %%
-{delimitador}  { if (verbosidad) ECHO; }
+{delimitador}   { if (verbosidad) ECHO;    }
+{comentario}    { if (verbosidad) ECHO;    }
 
-"struct"    { retornar(STRUCT_);       }
+
+"struct"        { retornar(STRUCT_);       }
 "read"          { retornar(READ_);         }
 "print"         { retornar(PRINT_);        }
 "if"            { retornar(IF_);           }
