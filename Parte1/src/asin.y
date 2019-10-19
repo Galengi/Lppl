@@ -19,28 +19,34 @@
 programa 
 	: LLAVABI_ secuenciaSentencias LLAVCER_
    	;
+	
 secuenciaSentencias	
 	: sentencia
    	| secuenciaSentencias sentencia
    	;
+	
 sentencia 
 	: declaracion
    	| instruccion   
    	;
+	
 declaracion 
 	: tipoSimple ID_
    	| tipoSimple ID_ ASIG_ constante	 
    	| tipoSimple ID_ CORCHABI_ CTE_ CORCHCER_
    	| STRUCT_ LLAVABI_  listaCampos LLAVCER_ ID_  	 
    	;
+	
 tipoSimple 
 	: INT_
    	| BOOL_
    	;
+	
 listaCampos 
 	: tipoSimple ID_
    	| listaCampos tipoSimple ID_
    	;
+	
 instruccion 
 	: LLAVABI_ LLAVCER_
    	| LLAVABI_ listaInstrucciones LLAVCER_
@@ -49,54 +55,67 @@ instruccion
    	| instruccionIteracion
    	| instruccionExpresion
    	;
+	
 listaInstrucciones 
 	: instruccion
    	| listaInstrucciones instruccion
    	;
+	
 instruccionEntradaSalida 
 	: READ_ PARENABI_ ID_ PARENCER_
    	| PRINT_ PARENABI_ expresion PARENCER_
    	;
+	
 instruccionSeleccion
 	: IF_ PARENABI_ expresion PARENCER_ instruccion ELSE_ instruccion
    	;
+	
 instruccionIteracion 
 	: WHILE_ PARENABI_ expresion PARENCER_ instruccion
    	;
+	
 instruccionExpresion 
 	: expresion
    	| 
    	;
+	
 expresion
 	: expresionLogica
    	| ID_ operadorAsignacion expresion
    	| ID_  CORCHABI_ expresion CORCHCER_ operadorAsignacion expresion
    	| ID_ PUNTDECIM_ ID_ operadorAsignacion expresion
    	;
+	
 expresionLogica 
 	: expresionIgualdad
    	| expresionLogica operadorLogico expresionIgualdad
    	;
+	
 expresionIgualdad 
 	: expresionRelacional
    	| expresionIgualdad operadorIgualdad expresionRelacional
    	;
+	
 expresionRelacional 
 	: expresionAditiva
    	| expresionRelacional operadorRelacional expresionAditiva
    	;
+	
 expresionAditiva 
 	: expresionMultiplicativa
    	| expresionAditiva operadorAditivo expresionMultiplicativa
    	;
+	
 expresionMultiplicativa : expresionUnaria
    	| expresionMultiplicativa operadorMultiplicativo expresionUnaria
    	;
+	
 expresionUnaria 
 	: expresionSufija
    	| operadorUnario expresionUnaria
    	| operadorIncremento ID_
    	;
+	
 expresionSufija 
 	: PARENABI_ expresion PARENCER_
    	| ID_ operadorIncremento
@@ -105,11 +124,13 @@ expresionSufija
    	| ID_ PUNTDECIM_ ID_
    	| constante
    	;
+	
 constante
 	: CTE_
    	| TRUE_
    	| FALSE_
    	;
+	
 operadorAsignacion 
 	: ASIG_
    	| MASIGUAL_
@@ -117,34 +138,41 @@ operadorAsignacion
    	| PORIGUAL_
    	| DIVIGUAL_
    	;
+	
 operadorLogico 
 	: AND_
    	| OR_
    	;
+	
 operadorIgualdad 
 	: IGUAL_
    	| DISTINTO_
    	;
+	
 operadorRelacional
 	: MAYOR_
    	| MENOR_
    	| MAYIGU_
    	| MENIGU_
    	;
+	
 operadorAditivo 
 	: MAS_
    	| MENOS_
    	;
+	
 operadorMultiplicativo 
 	: POR_
    	| DIV_
    	| PORCENT_
    	;
+	
 operadorUnario 
 	: MAS_
    	| MENOS_
    	| NEGACIO_
    	;
+	
 operadorIncremento 
 	: INCRE_
    	| DECRE_
