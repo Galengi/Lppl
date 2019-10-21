@@ -32,8 +32,8 @@ sentencia
 	
 declaracion 
 	: tipoSimple ID_ PUNTDECIM_
-   	| tipoSimple ID_ ASIG_ CTE_ PUNTDECIM_ 
-   	| tipoSimple ID_ CORCHABI_ constante CORCHCER_ PUNTDECIM_
+   	| tipoSimple ID_ ASIG_ constante PUNTDECIM_ 
+   	| tipoSimple ID_ CORCHABI_ CTE_ CORCHCER_ PUNTDECIM_
    	| STRUCT_ LLAVABI_ listaCampos LLAVCER_ ID_ PUNTDECIM_	 
    	;
 	

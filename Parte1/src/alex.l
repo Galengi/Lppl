@@ -7,7 +7,7 @@
 #include "header.h"
 #include "asin.h"
 
-#define  retornar(x) {if (verbosidad) ECHO; }
+#define  retornar(x) {if (verbosidad) ECHO; return x ;}
 %}
 /*-----------------------------------------------------------------------------
   Estas opciones evitan "warnings" innecesarios y permiten obtener el
@@ -67,7 +67,7 @@ identificador  {letra}({letra}|{digito}|_)*
 "["             { retornar(CORCHABI_);     }
 "]"             { retornar(CORCHCER_);     }
 ";"             { retornar(PUNTDECIM_);    }
-
+"."             { retornar(PUNTO_);        }
 {constante}     { retornar(CTE_);          }
 {identificador} { retornar(ID_);           }
 
