@@ -9,7 +9,7 @@
 %}
 
 %token ID_ STRUCT_ INT_ BOOL_ READ_ PRINT_ IF_ ELSE_ WHILE_ CTE_ TRUE_ FALSE_ 
-%token PARA_ PARC_ ASIG_ MAS_ MENOS_ POR_ DIV_ PORCENT_ NEGACIO_  AND_ OR_
+%token PARA_ PARC_ ASIG_ MAS_ MENOS_ POR_ DIV_ PORCENT_ NEGACIO_ AND_ OR_
 %token INCRE_ DECRE_ MASIGUAL_ MENOSIGUAL_ PORIGUAL_ DIVIGUAL_
 %token IGUAL_ DISTINTO_ MAYOR_ MENOR_ MAYIGU_ MENIGU_ 
 %token LLAVABI_ LLAVCER_ CORCHABI_ CORCHCER_ PARENABI_ PARENCER_ PUNTDECIM_ PUNTO_
@@ -34,7 +34,7 @@ declaracion
 	: tipoSimple ID_ PUNTDECIM_
    	| tipoSimple ID_ ASIG_ CTE_ PUNTDECIM_ 
    	| tipoSimple ID_ CORCHABI_ constante CORCHCER_ PUNTDECIM_
-   	| STRUCT_ LLAVABI_  listaCampos LLAVCER_ ID_ PUNTDECIM_	 
+   	| STRUCT_ LLAVABI_ listaCampos LLAVCER_ ID_ PUNTDECIM_	 
    	;
 	
 tipoSimple 
@@ -82,7 +82,7 @@ instruccionExpresion
 expresion
 	: expresionLogica
    	| ID_ operadorAsignacion expresion
-   	| ID_  CORCHABI_ expresion CORCHCER_ operadorAsignacion expresion
+   	| ID_ CORCHABI_ expresion CORCHCER_ operadorAsignacion expresion
    	| ID_ PUNTO_ ID_ operadorAsignacion expresion
    	;
 	
@@ -107,7 +107,7 @@ expresionAditiva
    	;
 	
 expresionMultiplicativa
-    : expresionUnaria
+    	: expresionUnaria
    	| expresionMultiplicativa operadorMultiplicativo expresionUnaria
    	;
 	
