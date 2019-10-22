@@ -17,28 +17,26 @@
 %option nounput       
 %option yylineno  
 
-delimitador    [ \t\n]+
 comentario     \/\/.*
 letra          [a-zA-Z]
 digito         [0-9]
+delimitador    [ \t\n]+
 constante      {digito}*(\.{digito}+)?
 identificador  {letra}({letra}|{digito}|_)*
 
 %%
 {delimitador}   { if (verbosidad) ECHO;    }
 {comentario}    { if (verbosidad) ECHO;    }
-
-
 "struct"        { retornar(STRUCT_);       }
 "read"          { retornar(READ_);         }
 "print"         { retornar(PRINT_);        }
-"if"            { retornar(IF_);           }
-"else"          { retornar(ELSE_);         }
-"while"         { retornar(WHILE_);        }
 "int"           { retornar(INT_);          }
 "bool"          { retornar(BOOL_);         }
 "true"          { retornar(TRUE_);         }
 "false"         { retornar(FALSE_);        }
+"if"            { retornar(IF_);           }
+"else"          { retornar(ELSE_);         }
+"while"         { retornar(WHILE_);        }
 "=="            { retornar(IGUAL_);        }
 "!="            { retornar(DISTINTO_);     }
 "+="            { retornar(MASIGUAL_);     }
